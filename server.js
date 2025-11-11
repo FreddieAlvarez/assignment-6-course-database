@@ -37,6 +37,7 @@ app.post('/api/courses', (req, res) => {
     ); 
 });
 
+//PUT existing course
 app.put('/api/courses/:id', (req, res) => { 
     const id = req.params.id; 
     const { courseCode, title, credits, description, semester } = req.body; 
@@ -58,6 +59,7 @@ app.delete('/api/courses/:id', (req, res) => {
     ); 
 });
 
+//start server
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
