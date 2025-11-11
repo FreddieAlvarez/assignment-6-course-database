@@ -2,19 +2,21 @@ const sqlite3 = require('sqlite3').verbose();
 
 // Create/connect to database file
 
-const db = new sqlite3.Database('./database/inventory.db');
+const db = new sqlite3.Database('./database/university.db');
 console.log('Connected to SQLite database');
 
-// Create products table
+// Create Courses table
 db.run(`
-  CREATE TABLE products (
+  CREATE TABLE courses (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT,
+    courseCode TEXT,
+    title TEXT,
+    credits INTEGER,
     description TEXT,
-    price REAL,
-    category TEXT,
-    inStock INTEGER
+    semester TEXT
   )
 `);
 
-console.log('Products table created');
+console.log('The database was successfully created');
+
+db.close();
