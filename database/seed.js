@@ -1,20 +1,26 @@
 const sqlite3 = require('sqlite3').verbose();
 
 // Connect to database file
-const db = new sqlite3.Database('./database/inventory.db');
+const db = new sqlite3.Database('./database/university.db');
 
 // Insert sample products
 db.run(`
-  INSERT INTO products (name, description, price, category, inStock)
+  INSERT INTO courses (courseCode, title, credits, description, semester)
   VALUES 
-('Wireless Headphones', 'Bluetooth headphones with noise cancellation', 89.99, 'Electronics', 25),
-    ('Coffee Mug', 'Ceramic mug with company logo', 12.50, 'Office Supplies', 100),
-    ('Laptop Stand', 'Adjustable aluminum laptop stand', 45.00, 'Electronics', 15),
-    ('Notebook', 'Spiral-bound notebook with 200 pages', 8.99, 'Office Supplies', 50)
+('CS101', 'Intro Programming', 3, 'Learn Python basics', 'Fall 2024'),
+    ('BIO120', 'General Biology', 3, 'Introduction to biological principles', 'Fall 2024'),
+    ('MATH150', 'Calculus I', 4, 'Basic calculus', 'Fall 2024'),
+    ('ENG101', 'Composition I', 3, 'Academic writing and critical thinking', 'Spring 2025'),
+    ('ME210', 'Thermodynamics', 3, 'Principles of thermodynamics and heat transfer', 'Spring 2025'),
+    ('CS301', 'Database Systems', 3, 'Design and implementation of database systems', 'Fall 2024'),
+    ('PHYS201', 'Physics II', 4, 'Electricity, magnetism, and modern physics', 'Spring 2025'),
+    ('CS201', 'Data Structures', 4, 'Study of fundamental data structures and algorithms', 'Spring 2025')
 `);
 
-console.log('Sample data inserted');
+console.log('values were successfully added to the database');
 
-db.all('SELECT * FROM products', (err, rows) => { 
+db.all('SELECT * FROM courses', (err, rows) => { 
     console.log(rows); 
 });
+
+db.close();
